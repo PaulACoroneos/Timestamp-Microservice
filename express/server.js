@@ -18,20 +18,18 @@ app.use(express.static('public'));
 
 app.use(bodyParser.json());
 
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
+router.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
 
 // your first API endpoint... 
-app.get("/api/hello", function (req, res) {
+router.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get("/api/timestamp/:date_string?", function(req,res) {
+router.get("/api/timestamp/:date_string?", function(req,res) {
 
   const dateParam = req.params['date_string'];
 
@@ -53,6 +51,8 @@ app.get("/api/timestamp/:date_string?", function(req,res) {
   }
 
 });
+
+app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 module.exports = app;
 module.exports.handler = serverless(app);
