@@ -37,22 +37,20 @@ router.get("/api/timestamp/:date_string?", function (req, res) {
     return res.json({ unix: newDate.getTime(), utc: newDate.toUTCString() });
   }
 
+  //check if number > 5 to pass as num, otherwise pass as string
+  if (/\d{5,}/.test(dateParam)) {
+    console.log(dateParam);
+    const parsedDate = new Date(parseInt(dateParam));
+    res.json({ unix: dateParam, utc: parsedDate.toUTCString() });
+  }
   //date is invalid
-  const date = Date.parse(dateParam);
-  if (isNaN(date)) {
+  else if (new Date(dateParam).toString() === "Invalid Date") {
     res.json({ error: "Invalid Date" });
   }
-  //date valid, lets return formatted object
+  //otherwise valid non-unix time
   else {
-    //check if number > 5 to pass as num, otherwise pass as string
-    let parsedDate;
-    if (/\d{5,}/.test(dateParam)) {
-      parsedDate = new Date(parseInt(dateParam));
-      res.json({ unix: dateParam, utc: parsedDate.toUTCString() });
-    } else {
-      parsedDate = new Date(dateParam);
-      res.json({ unix: parsedDate.getTime(), utc: parsedDate.toUTCString() });
-    }
+    const parsedDate = new Date(dateParam);
+    res.json({ unix: parsedDate.getTime(), utc: parsedDate.toUTCString() });
   }
 });
 
