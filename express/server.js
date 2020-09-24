@@ -19,7 +19,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 // http://expressjs.com/en/starter/basic-routing.html
-router.get("/", function (req, res) {
+router.get("/home", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
