@@ -25,11 +25,11 @@ router.get("/", function (req, res) {
 
 
 // your first API endpoint... 
-router.get("/api/hello", function (req, res) {
+router.get("/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-router.get("/api/timestamp/:date_string?", function(req,res) {
+router.get("/timestamp/:date_string?", function(req,res) {
 
   const dateParam = req.params['date_string'];
 
@@ -52,7 +52,7 @@ router.get("/api/timestamp/:date_string?", function(req,res) {
 
 });
 
-app.use('/.netlify/functions/', router);  // path must route to lambda
+app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 module.exports = app;
 module.exports.handler = serverless(app);
