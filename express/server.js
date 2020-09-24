@@ -41,7 +41,7 @@ router.get("/api/timestamp/:date_string?", function(req,res) {
 
   //date is invalid
   const date = Date.parse(dateParam);
-  if(date === NaN) {
+  if(isNaN(date)) {
     res.json({"error": "Invalid Date"});
   }
   //date valid, lets return formatted object
