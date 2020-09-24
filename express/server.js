@@ -5,6 +5,7 @@
 var express = require('express');
 var app = express();
 const serverless = require('serverless-http');
+const bodyParser = require('body-parser');
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -14,6 +15,8 @@ app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 20
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
+
+app.use(bodyParser.json());
 
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
