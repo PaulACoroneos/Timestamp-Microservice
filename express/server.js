@@ -39,7 +39,6 @@ router.get("/api/timestamp/:date_string?", function (req, res) {
 
   //check if number > 5 to pass as num, otherwise pass as string
   if (/\d{5,}/.test(dateParam)) {
-    console.log(dateParam);
     const parsedDate = new Date(parseInt(dateParam));
     res.json({ unix: dateParam, utc: parsedDate.toUTCString() });
   }
