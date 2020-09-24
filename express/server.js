@@ -51,10 +51,5 @@ app.get("/api/timestamp/:date_string?", function(req,res) {
 
 });
 
-// listen for requests :)
-var listener = app.listen(3000, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
-
 module.exports = app;
 module.exports.handler = serverless(app);
