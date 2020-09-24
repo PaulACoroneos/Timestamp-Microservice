@@ -29,7 +29,7 @@ router.get("/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-router.get("/timestamp/:date_string?", function(req,res) {
+router.get("/api/timestamp/:date_string?", function(req,res) {
 
   const dateParam = req.params['date_string'];
 
