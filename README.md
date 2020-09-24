@@ -1,6 +1,8 @@
 
 # API Project: Timestamp Microservice for FCC
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/743fd069-8fbd-443c-85b0-0ff752b36ef5/deploy-status)](https://app.netlify.com/sites/timestamp-generator/deploys)
+
 ### User stories:
 
 1. The API endpoint is `GET https://timestamp-generator.netlify.app/.netlify/functions/server/timestamp/:date_string?`
