@@ -52,7 +52,7 @@ router.get("/api/timestamp/:date_string?", function(req,res) {
 
 });
 
-app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/.netlify/functions/', router);  // path must route to lambda
 
 module.exports = app;
 module.exports.handler = serverless(app);
